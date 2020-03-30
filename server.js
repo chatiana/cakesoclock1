@@ -3,9 +3,11 @@ const http = require('http');
 const express = require("express");
 const bodyParser = require("body-parser");
 
-
+//load routes
 var routes = require('./routes');
+var productjsfile = require('.routes/product');
 
+//object of express framwework
 var app = express();
 
 
@@ -39,7 +41,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json()); // parse form data client
 //app.use(express.static(path.join(__dirname, 'public'))); // configure express to use public folder
 //app.use(fileUpload()); // configure fileupload
-
+app.get('/products', productjsfile.list);
 
 
 //load products route
